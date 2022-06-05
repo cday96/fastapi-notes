@@ -1,12 +1,20 @@
 import React from 'react'
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import PostItem from "../components/PostItem"
-
-let dummyData = [{"id":"1", "title":"Get milk", "content":"Get that milk today" }, {"id":"2", "title":"Get bread", "content":"Get that bread today" }]
 
 const Posts = () => {
 
-const [posts, setPosts] = useState(dummyData)
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+  const getPosts = async () => {
+    const res = await axios.get("http://127.0.0.1:8000/posts")
+    setPosts(res.data)
+  }
 
   return (
     <div>

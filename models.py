@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from database import Base
 
-# Create a table in the databse for posts
+# Create a table in the database for posts
 class Posts(Base):
     __tablename__ = 'posts'
     id = Column(Integer, primary_key=True)
