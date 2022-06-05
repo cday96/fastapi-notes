@@ -5,21 +5,21 @@ import SideNav from "./components/SideNav"
 import Layout from "./components/Layout"
 
 function App() {
-  return (
-    <div>
-        <Router>
-            <div className = "flex">
-                <SideNav />
-                <Layout>
-                    <Routes>
-                        <Route path="/" element={<Posts />} exact/>
-                        <Route path="/:id" element={<Post />}/>
-                    </Routes>
-                </Layout>
-            </div>
-        </Router>
-    </div>
-  );
+    return (
+        <div>
+            <Router>
+                <div className="flex">
+                    <SideNav />
+                    <Layout>
+                        <Routes>
+                            <Route path="/" element={<Posts />} exact />
+                            <Route path="/:id" element={<Post />} />
+                        </Routes>
+                    </Layout>
+                </div>
+            </Router>
+        </div>
+    )
 }
 
-export default App;
+export default App

@@ -48,6 +48,7 @@ def getSinglePost(id: int, session: Session = Depends(get_session)):
 @app.put("/posts/{id}")
 def updatePost(id: int, item: Post, session: Session = Depends(get_session)):
     post_to_update = session.query(Posts).get(id)
+    post_to_update.title = item.title
     post_to_update.content = item.content
     session.commit()
     return post_to_update
