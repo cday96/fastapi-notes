@@ -14,7 +14,7 @@ const Post = () => {
     const postId = params.id
 
     useEffect(() => {
-        if (postId !== "add") getPost()
+        if (postId !== "create") getPost()
     }, [postId])
 
     const getPost = async () => {
@@ -38,7 +38,7 @@ const Post = () => {
         }
         console.log(postId)
         try {
-            if (postId !== "add") {
+            if (postId !== "create") {
                 const res = await axios.put(`http://127.0.0.1:8000/posts/${postId}`, postData, {
                     headers: {
                         "Content-Type": "application/json",
@@ -65,9 +65,11 @@ const Post = () => {
 
     return (
         <div>
-            <Link to={"/"}>Go Back</Link>
-            {postId !== "add" && (
-                <button className="w-36 btn btn-lg" type="submit" onClick={deletePost}>
+            <Link className="post-button" to={"/"}>
+                Go Back
+            </Link>
+            {postId !== "create" && (
+                <button className="post-button" type="submit" onClick={deletePost}>
                     Delete
                 </button>
             )}

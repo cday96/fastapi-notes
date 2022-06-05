@@ -16,8 +16,7 @@ const Posts = () => {
     }
 
     return (
-        <div>
-            <h1>Posts</h1>
+        <div className="w-1/2">
             {posts.map(post => (
                 <PostItem key={post.id} post={post} />
             ))}

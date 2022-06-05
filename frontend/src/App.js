@@ -6,17 +6,15 @@ import Layout from "./components/Layout"
 
 function App() {
     return (
-        <div>
+        <div className="flex h-screen">
             <Router>
-                <div className="flex">
-                    <SideNav />
-                    <Layout>
-                        <Routes>
-                            <Route path="/" element={<Posts />} exact />
-                            <Route path="/:id" element={<Post />} />
-                        </Routes>
-                    </Layout>
-                </div>
+                <SideNav />
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Posts />} exact />
+                        <Route path="/:id" element={<Post />} />
+                    </Routes>
+                </Layout>
             </Router>
         </div>
     )

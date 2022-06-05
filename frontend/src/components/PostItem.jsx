@@ -1,13 +1,15 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import NavIcon from "./NavIcon"
+import { FaEdit } from "react-icons/fa"
 
 const PostItem = ({ post }) => {
     return (
-        <div>
-            <Link to={`/${post.id}`}>
-                <p>{post.title}</p>
-                <p>{post.content}</p>
-            </Link>
+        <div className="post">
+            <div className="post-content">
+                <p className="post-title">{post.title}</p>
+                <p className="post-text">{post.content}</p>
+            </div>
+            <NavIcon to={`/${post.id}`} icon={<FaEdit size="28" />} tooltip={"Edit Post"} />
         </div>
     )
 }
