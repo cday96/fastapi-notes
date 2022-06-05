@@ -1,12 +1,12 @@
 import React from 'react'
 import TopNav from './TopNav'
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
     <div className = "content-container">
         <TopNav />
         <div className = "content-list">
-            {/* Add PostItem here */}
+            { children }
         </div>
     </div>
   )
