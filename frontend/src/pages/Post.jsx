@@ -1,7 +1,9 @@
 import React from "react"
 import axios from "axios"
 import { useState, useEffect } from "react"
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
+import { FaArrowLeft, FaRegTrashAlt } from "react-icons/fa"
+import NavIcon from "../components/NavIcon"
 
 const Post = () => {
     const [post, setPost] = useState({
@@ -65,29 +67,35 @@ const Post = () => {
 
     return (
         <div>
-            <Link className="post-button" to={"/"}>
-                Go Back
-            </Link>
-            {postId !== "create" && (
-                <button className="post-button" type="submit" onClick={deletePost}>
-                    Delete
-                </button>
-            )}
+            <div className="flex items-center justify-between mb-2">
+                <NavIcon to={"/"} icon={<FaArrowLeft size="16" />} tooltip={"Go Back"} />
+                {postId !== "create" && (
+                    <button className="delete-button group" type="submit" onClick={deletePost}>
+                        <FaRegTrashAlt />
+                    </button>
+                )}
+            </div>
+
             <form onSubmit={handleSubmit}>
                 <div className="form-control">
-                    <div className="relative">
-                        <input className="w-full pr-40 bg-neutral input input-lg text-zinc-300" id="title" name="title" value={post?.title} placeholder="Title..." onChange={handleChange} required />
+                    <div className=" p-2 border-solid border-2 border-slate-600 rounded">
+                        <div className="relative">
+                            <input className="form-title-input" id="title" name="title" value={post?.title} placeholder="Title..." onChange={handleChange} required />
+                        </div>
+                        <Divider />
+                        <div className="relative">
+                            <textarea className="form-input" id="content" name="content" value={post?.content} placeholder="Content..." onChange={handleChange} required />
+                        </div>
                     </div>
-                    <div className="relative">
-                        <textarea className="w-full pr-40 bg-neutral input input-lg text-zinc-300" id="content" name="content" value={post?.content} placeholder="Content..." onChange={handleChange} required />
-                    </div>
-                    <button className="absolute top-0 right-0 w-36 btn btn-lg" type="submit">
-                        Save
+                    <button className="save-button" type="submit">
+                        Save Post
                     </button>
                 </div>
             </form>
         </div>
     )
 }
+
+const Divider = () => <hr className="divider-hr" />
 
 export default Post
